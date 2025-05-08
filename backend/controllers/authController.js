@@ -23,3 +23,33 @@ exports.login = (req, res) => {
 
   res.json({ token });
 };
+
+
+exports.signup = (req, res) => {
+    const { email, password } = req.body;
+  
+    const existingUser = users.find(u => u.email === email);
+    if (existingUser) {
+      return res.status(400).json({ message: "User already exists" });
+    }
+  
+    const hashedPassword = bcrypt.hashSync(password, 10);
+  
+    const newUser = {
+      id: users.length + 1,
+      email,
+      password: hashedPassword
+    };
+    users.push(newUser);
+    fs.writeFileSync("users.json", JSON.stringify(users, null, 2));
+  
+
+    const token = jwt.sign(
+      { id: newUser.id, email: newUser.email },
+      process.env.JWT_SECRET,
+      { expiresIn: "1h" }
+    );
+  
+    
+    res.status(201).json({ token });
+  };
