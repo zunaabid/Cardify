@@ -36,9 +36,7 @@ exports.signup = async (req, res) => {
   const { email, password } = req.body;
 
   try {
-    console.log("User lookup started!");
     const existingUser = await User.findOne({ email });
-    console.log("User lookup finished!");
     if (existingUser) {
       return res.status(400).json({ message: "User already exists" });
     }
