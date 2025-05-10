@@ -10,7 +10,10 @@ app.use(express.json());
 const authRoutes = require('./routes/authRoutes');
 app.use("/api/auth", authRoutes);
 
-const port = process.env.PORT || 3000;
+const projectRoutes= require('./routes/projectRoutes');
+app.use("/api/proj",projectRoutes);
+
+const port = process.env.PORT || 5000;
 
 connectDB()
   .then(() => {
@@ -18,7 +21,6 @@ connectDB()
     app.listen(port, () => {
       console.log(`App listening on port ${port}`);
     });
-    
   })
   .catch((err) => {
     console.error("MongoDB connection error:", err);

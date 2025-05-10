@@ -3,8 +3,6 @@ const jwt = require("jsonwebtoken");
 const User = require('../models/userModel'); 
 const mongoose=require('mongoose');
 
-console.log("Mongoose connection readyState:", mongoose.connection.readyState);
-
 
 exports.login = async (req, res) => {
   const { email, password } = req.body;
