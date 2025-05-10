@@ -13,6 +13,9 @@ app.use("/api/auth", authRoutes);
 const projectRoutes= require('./routes/projectRoutes');
 app.use("/api/proj",projectRoutes);
 
+const templaeRoutes=require('./routes/templateRoutes');
+app.use("/api/temp",templaeRoutes);
+
 const port = process.env.PORT || 5000;
 
 connectDB()
