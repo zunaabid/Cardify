@@ -1,0 +1,97 @@
+.properties-panel {
+  width: 280px;
+  background-color: white;
+  border-left: 1px solid #e5e7eb;
+  padding: 16px;
+  overflow-y: auto;
+}
+
+.properties-panel h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.property-group {
+  margin-bottom: 16px;
+}
+
+.property-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.property-group input[type="text"],
+.property-group select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #e5e7eb;
+  border-radius: 4px;
+}
+
+.property-group input[type="color"] {
+  width: 100%;
+  height: 40px;
+  border: 1px solid #e5e7eb;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.range-with-value {
+  display: flex;
+  align-items: center;
+}
+
+.range-with-value input {
+  flex: 1;
+  margin-right: 12px;
+}
+
+.range-with-value span {
+  width: 50px;
+  text-align: right;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.text-align-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.align-button {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  background-color: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.align-button.active {
+  background-color: #eff6ff;
+  border-color: #3b82f6;
+  color: #3b82f6;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .properties-panel {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    z-index: 10;
+    transform: translateX(280px);
+    transition: transform 0.3s ease;
+  }
+
+  .properties-panel.visible {
+    transform: translateX(0);
+  }
+}
